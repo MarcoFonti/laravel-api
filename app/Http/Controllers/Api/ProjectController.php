@@ -14,7 +14,7 @@ class ProjectController extends Controller
     public function index()
     {
         /* RECUPERO  I PROGETTI PUBBLICATI */
-        $projects = Project::where('is_published', 1)->get();
+        $projects = Project::where('is_published', 1)->with('type')->get();
 
         /* CICLO SUI PROGETTI */
         foreach ($projects as $project) {
