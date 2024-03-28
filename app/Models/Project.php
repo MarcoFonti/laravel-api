@@ -45,4 +45,6 @@ class Project extends Model
         /* MOLTE TECNOLOGIE */
         return $this->belongsToMany(Technology::class);
     }
+
+    
 }

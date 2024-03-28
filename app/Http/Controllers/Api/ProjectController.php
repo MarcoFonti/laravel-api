@@ -13,7 +13,20 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        /* RECUPERO  I PROGETTI PUBBLICATI */
+        $projects = Project::where('is_published', 1)->get();
+
+        /* CICLO SUI PROGETTI */
+        foreach ($projects as $project) {
+            /* SE CE UNA IMMAGINE */
+            if($project->image) {
+                /* RIASSE L'IMMAGINE CON URL E DIVENTA ASSOLUTO */
+                $project->image = url('storage/' . $project->image);
+            }
+        }
+
+        /* RESTITUISCO I PROGETTI IN FOTRMATO JSON */
+        return response()->json($projects);
     }
 
     /**

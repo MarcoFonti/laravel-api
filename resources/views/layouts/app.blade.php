@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- TITLO --}}
-    <title>{{ config('app.name', 'Laravel Boolfolio - API') }} | @yield('title')</title>
+    <title>{{ config('app.name', 'Boolfolio') }} | @yield('title')</title>
 
     {{-- STYLE BODY --}}
     <style>
