@@ -40,9 +40,18 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Project $project)
+    public function show(string $id)
     {
-        //
+        /* CREO UNA QUERY CHE RECUPERA SOLO I PROGETTI PUBBLICATI CON L'ID SPECIFICO */
+        $project = Project::whereIsPublished(1)->find($id);
+
+        /* SE NON ESISTONO PROGETTI CREO MESSAGGIO NULLO E CODICE 404*/
+        if(!$project){
+            return response(null, 404);
+        }
+        
+        /* RESTITUISCO IL PROGETTO IN FOTRMATO JSON */
+        return response()->json($project);
     }
 
     /**

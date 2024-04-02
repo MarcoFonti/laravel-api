@@ -20,7 +20,12 @@ use Illuminate\Support\Facades\Route;
 });
  */
 
- /* CREO ROTTA INDEX API */
+ /* CREO ROTTE API */
+
+ /* INDEX */
 Route::get('/projects', [ProjectController::class, 'index']);
+
+/* SHOW */
+Route::get('/projects/{id}', [ProjectController::class, 'show']);
 
 /* Route::apiResource('projects', [ProjectController::class]); */
