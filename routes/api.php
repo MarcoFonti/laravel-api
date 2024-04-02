@@ -26,6 +26,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/projects', [ProjectController::class, 'index']);
 
 /* SHOW */
-Route::get('/projects/{id}', [ProjectController::class, 'show']);
+Route::get('/projects/{slug}', [ProjectController::class, 'show']);
 
 /* Route::apiResource('projects', [ProjectController::class]); */

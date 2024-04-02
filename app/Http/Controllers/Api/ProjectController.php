@@ -14,7 +14,7 @@ class ProjectController extends Controller
     public function index()
     {
         /* RECUPERO  I PROGETTI PUBBLICATI */
-        $projects = Project::where('is_published', 1)->with('type')->get();
+        $projects = Project::where('is_published', 1)->with('type', 'technologies')->get();
 
         /* CICLO SUI PROGETTI */
         foreach ($projects as $project) {
@@ -40,10 +40,10 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
-        /* CREO UNA QUERY CHE RECUPERA SOLO I PROGETTI PUBBLICATI CON L'ID SPECIFICO */
-        $project = Project::whereIsPublished(1)->find($id);
+        /* CREO UNA QUERY CHE RECUPERA SOLO I PROGETTI PUBBLICATI E RECUPERO ANCHE LO SLUG */
+        $project = Project::whereIsPublished(1)->whereSlug($slug)->with('type', 'technologies')->first();
 
         /* SE NON ESISTONO PROGETTI CREO MESSAGGIO NULLO E CODICE 404*/
         if(!$project){
