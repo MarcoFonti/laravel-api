@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Project;
+use Illuminate\Support\Str;
 use App\Models\Technology;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -36,6 +37,9 @@ class TechnologySeeder extends Seeder
 
             /* ASSEGNO LA PROPIETA' LABEL DELL'ARRAY ASSOCIATIVO ALLA VARIBILE */
             $technology->label = $tecno_info['label'];
+
+            /* ASSEGNO LA PROPIETA' SLUG DELL'ARRAY ASSOCIATIVO ALLA VARIBILE */
+            $technology->slug = Str::slug($tecno_info['label']);
             
             /* ASSEGNO LA PROPIETA' COLOR DELL'ARRAY ASSOCIATIVO ALLA VARIABILE */
             $technology->color = $tecno_info['color'];   
