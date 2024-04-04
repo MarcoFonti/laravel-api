@@ -5,6 +5,7 @@ use App\Http\Controllers\guest\HomeController as GuestHomeController;
 use App\Http\Controllers\admin\ProjectController as AdminProjectController;
 use App\Http\Controllers\admin\TechnologyController as AdminTechnologyController;
 use App\Http\Controllers\admin\TypeController;
+use App\Http\Controllers\Api\TypeProjectController;
 use App\Http\Controllers\guest\ProjectController as GuestProjectController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,8 @@ Route::get('/projects', [GuestProjectController::class, 'index'])->name('guest.p
 /* SHOW */
 Route::get('/projects/{slug}', [GuestProjectController::class, 'show'])->name('guest.projects.show');
 
+/* ROTTA PERO TIPOLOGIA */
+Route::get('types/{slug}/projects', TypeProjectController::class);
 
 
 /* ----------------------------- ADMIN -------------------------------- */
