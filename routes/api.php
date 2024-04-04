@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ProjectController;
+use App\Http\Controllers\Api\TypeProjectController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,5 +28,8 @@ Route::get('/projects', [ProjectController::class, 'index']);
 
 /* SHOW */
 Route::get('/projects/{slug}', [ProjectController::class, 'show']);
+
+/* ROTTA PERO TIPOLOGIA */
+Route::get('types/{slug}/projects', TypeProjectController::class);
 
 /* Route::apiResource('projects', [ProjectController::class]); */

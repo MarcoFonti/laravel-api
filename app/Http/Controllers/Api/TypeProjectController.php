@@ -20,7 +20,7 @@ class TypeProjectController extends Controller
         }
 
         /* FILTRO I RECORD DELLA TABELLA PROJECTS IN BASE ALL'ID TYPE, FILTRO ANCHE I RECORD PUBBLICI E MANDO GIU' ANCHE LE VARIE RELAZIONI */
-        $projects = Project::where('type_id', $type->id)->where('is_published', 1)->with('technologies', 'type')->get();
+        $projects = Project::whereTypeId($type->id)->where('is_published', 1)->with('type', 'technologies')->get();
 
         /* RESTITUISCO IL PROGETTO IN FOTRMATO JSON */
         return response()->json(['projects' => $projects, 'label' => $type->label]);
