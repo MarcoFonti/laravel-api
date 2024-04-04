@@ -22,7 +22,7 @@ class NewContact extends Mailable
      * Create a new message instance.
      */
 
-     /* NEL COSTRUTTORE PASSO LE VARIABILI CREATE */
+     /* NEL COSTRUTTORE PASSO LE VARIABILI CREATE CHE RIEMPIRO CON UNA NUOVA ISTANZA*/
     public function __construct($email, $name, $text)
     {
         $this->email = $email;
@@ -36,7 +36,9 @@ class NewContact extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
+            /* EMAIL */
             from: $this->email,
+            /* OGETTO */
             subject: $this->name,
         );
     }
@@ -47,7 +49,9 @@ class NewContact extends Mailable
     public function content(): Content
     {
         return new Content(
+            /* VISTA */
             view: 'mails.contact',
+            /* CONTENUTO VISTA */
             with:['content' => $this->text]
         );
     }
